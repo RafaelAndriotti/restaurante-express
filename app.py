@@ -53,7 +53,7 @@ def alternar_ativacao():#função criada para alterarmos a ativação dos restau
     restaurante_encontrado = False
 
     for restaurante in restaurantes: #condição criada para validar a situação atual do restaurante selecionado
-        if nomeRestaurante == restaurantes['nome']: #Se o nome do restaurante digitado for igual ao nome do restuarante cadastrado, executa esse bloco
+        if nomeRestaurante == restaurante['nome']: #Se o nome do restaurante digitado for igual ao nome do restuarante cadastrado, executa esse bloco
             restaurante_encontrado = True
             restaurante['ativo'] = not restaurante['ativo']
             #Se o restaurante for ativado, exibe a primeira mensagem, caso contrário exibe a segunda mensagem
