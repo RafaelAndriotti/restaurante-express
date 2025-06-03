@@ -11,8 +11,8 @@ def exibirNomePrograma(): #Função responsável por exibir o nome do programa
 def exibeOpcao(): #Função responsável por mostrar o menu de opções do sistema
     print('1 - Cadastrar restaurante')
     print('2 - Listar restaurante')
-    print('3 - Ativar restaurante')
-    print('4 - Sair')
+    print('3 - Alternar estado do restaurante restaurante')
+    print('4 - Sair\n')
 
 def finalizar_app():#Função que irá limpar a tela e informar que o sistema está sendo finalizado.
     exibir_substitulo('Finalizando o programa')
@@ -27,9 +27,14 @@ def opcao_invalida(): #função criada para quando o usuário digitar uma opçã
 
 def exibir_substitulo(texto): #Criado para facilitar no entendimento do código, utilizando apenas uma função para  que possamos atualizar muitas informações.
     os.system('cls')
+    linha = '*' * (len(texto))
+    print(linha)
     print(texto)
+    print(linha)
+    print()
 
 def cadastra_restaurante(): #função criada para cadastrar os restaurantes, onde informamos o nome do mesmo e adicionamos a lista 'restaurantes', logo após podemos digitar qualquer tecla e voltar ao  inicio do sistema.
+
     exibir_substitulo('Cadastro de novos restaurantes')
     nomeRestaurante = input('Informe o nome do restaurante que a ser cadastrado: ')
     categoria = input(f'Digite o nome da categoria do restaurante {nomeRestaurante}:')
@@ -40,11 +45,14 @@ def cadastra_restaurante(): #função criada para cadastrar os restaurantes, ond
 
 def lista_restaurante(): #função responsável por mostrar os restaurantes cadastrados no nosso sistema.
     exibir_substitulo('Listando todos os restaurantes')
+
+    print(f'{'Nome do restaurante'.ljust(22)} | {'Categoria'.ljust(22)} | Status')
     for restaurante in restaurantes: #atualizado para exibir com melhor organização as caracteristicas de cada restaurante.
         nome_restaurante = restaurante['nome']
         categoria = restaurante ['categoria']
-        ativo = restaurante['ativo']
-        print(f'- {nome_restaurante} | {categoria} | {ativo}')
+        ativo = 'ativado' if restaurante['ativo'] else 'desativado'
+        print(f'- {nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo}')
+    
     voltar_ao_menu_principal()
 
 def alternar_ativacao():#função criada para alterarmos a ativação dos restaurantes cadastrados
